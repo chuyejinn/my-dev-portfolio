@@ -2,53 +2,48 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://junheedot.com'),
   title: {
-    default: '이준희 | Frontend Developer',
-    template: '%s | 이준희',
+    default: '추예진 | Backend Developer',
+    template: '%s | 추예진',
   },
+
   description:
-    '4년차 프론트엔드 개발자 이준희입니다. 비즈니스 임팩트 중심의 개발과 레거시 시스템 현대화 경험을 바탕으로 사용자 경험과 서비스 성장에 기여합니다.',
+    '서비스의 전체 흐름을 이해하고, 문제의 원인을 찾아 개선하는 백엔드 개발자 추예진의 포트폴리오입니다.',
+
   keywords: [
-    '프론트엔드',
-    '개발자',
-    'React',
-    'Next.js',
-    'TypeScript',
+    '백엔드',
+    '백엔드 개발자',
+    'Backend Developer',
+    'Java',
+    'Spring Boot',
+    'JPA',
+    'MySQL',
+    'AWS',
     '포트폴리오',
-    '이준희',
+    '추예진',
   ],
-  authors: [{ name: '이준희' }],
-  creator: '이준희',
+
+  authors: [{ name: '추예진' }],
+  creator: '추예진',
+
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    alternateLocale: 'en_US',
-    siteName: '이준희 Portfolio',
-    title: '이준희 | Frontend Developer',
+    siteName: '추예진 Portfolio',
+    title: '추예진 | Backend Developer',
     description:
-      '4년차 프론트엔드 개발자 이준희입니다. 비즈니스 임팩트 중심의 개발과 레거시 시스템 현대화 경험을 바탕으로 사용자 경험과 서비스 성장에 기여합니다.',
-    images: [
-      {
-        url: '/title_image.png',
-        width: 1200,
-        height: 630,
-        alt: '이준희 Frontend Developer Portfolio',
-      },
-    ],
+      '서비스의 전체 흐름을 이해하고, 문제의 원인을 찾아 개선하는 백엔드 개발자 추예진의 포트폴리오입니다.',
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: '이준희 | Frontend Developer',
-    description: '4년차 프론트엔드 개발자 포트폴리오',
-    images: ['/title_image.png'],
+    title: '추예진 | Backend Developer',
+    description: '백엔드 개발자 추예진의 포트폴리오',
   },
+
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: '/',
   },
 };
 

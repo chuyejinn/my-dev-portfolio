@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Mail } from 'lucide-react';
 import * as gtag from '@/lib/gtag';
 
 export function Footer() {
@@ -11,21 +11,17 @@ export function Footer() {
   const socialLinks = [
     {
       icon: Github,
-      href: 'https://github.com/junh0328',
+      href: 'https://github.com/chuyejinn',
       label: 'GitHub',
       gtagLabel: 'github',
-    },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/%EC%A4%80%ED%9D%AC-%EC%9D%B4-23176a214/',
-      label: 'LinkedIn',
-      gtagLabel: 'linkedin',
+      external: true,
     },
     {
       icon: Mail,
-      href: 'mailto:junh0328@naver.com',
+      href: 'mailto:chuyejin0403@naver.com',
       label: 'Email',
       gtagLabel: 'email',
+      external: false,
     },
   ];
 
@@ -45,8 +41,8 @@ export function Footer() {
                 <a
                   key={link.label}
                   href={link.href}
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className='p-2 rounded-xl liquid-glass-subtle hover:liquid-glass text-muted-foreground hover:text-foreground transition-all'
                   aria-label={link.label}
                   onClick={() =>

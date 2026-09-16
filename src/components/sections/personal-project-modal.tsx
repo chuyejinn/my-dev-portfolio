@@ -18,8 +18,7 @@ import {
 } from '@/components/ui/carousel';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Button } from '@/components/ui/button';
-import { Calendar, Briefcase, Github } from 'lucide-react';
+import { Calendar, Briefcase } from 'lucide-react';
 
 interface PersonalProjectModalProps {
   projectKey: string | null;
@@ -27,17 +26,15 @@ interface PersonalProjectModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-/**
- * Generate descriptive alt text from image filename
- * e.g., "/images/personal-projects/my-agentic-ai/agentic-ai.gif" → "Review Sentiment Analysis Agent AI - agentic ai"
- */
 function getAltFromFilename(imagePath: string, projectTitle: string): string {
   const filename =
     imagePath
       .split('/')
       .pop()
       ?.replace(/\.(gif|png|jpg|jpeg|webp)$/i, '') || '';
+
   const readable = filename.replace(/_/g, ' ').replace(/-/g, ' ');
+
   return `${projectTitle} - ${readable}`;
 }
 
@@ -53,11 +50,19 @@ export function PersonalProjectModal({
   const title = t(`items.${projectKey}.title`);
   const role = t(`items.${projectKey}.role`);
   const period = t(`items.${projectKey}.period`);
+  const description = t(`items.${projectKey}.description`);
+
   const tech = t.raw(`items.${projectKey}.tech`) as string[];
-  const overview = t(`items.${projectKey}.detail.overview`);
+
+  const features = t.raw(`items.${projectKey}.features`) as string[];
+
   const tasks = t.raw(`items.${projectKey}.detail.tasks`) as string[];
+
+  const achievements = t.raw(
+    `items.${projectKey}.detail.achievements`
+  ) as string[];
+
   const images = t.raw(`items.${projectKey}.images`) as string[];
-  const github = t(`items.${projectKey}.github`);
 
   const hasImages = images && images.length > 0;
 
@@ -66,11 +71,13 @@ export function PersonalProjectModal({
       <DialogContent className='max-w-4xl max-h-[90vh] overflow-y-auto'>
         <DialogHeader>
           <DialogTitle className='text-2xl font-bold'>{title}</DialogTitle>
+
           <div className='flex flex-wrap items-center gap-4 text-sm text-muted-foreground mt-2'>
             <div className='flex items-center gap-2'>
               <Briefcase className='h-4 w-4' />
               <span>{role}</span>
             </div>
+
             <div className='flex items-center gap-2'>
               <Calendar className='h-4 w-4' />
               <span>{period}</span>
@@ -78,7 +85,7 @@ export function PersonalProjectModal({
           </div>
         </DialogHeader>
 
-        {/* Image Carousel */}
+        {/* Images */}
         {hasImages && (
           <div className='mt-4'>
             <Carousel className='w-full'>
@@ -98,6 +105,7 @@ export function PersonalProjectModal({
                   </CarouselItem>
                 ))}
               </CarouselContent>
+
               <CarouselPrevious />
               <CarouselNext />
               <CarouselDots />
@@ -109,19 +117,21 @@ export function PersonalProjectModal({
         <div className='mt-6'>
           <h3 className='text-lg font-semibold mb-3 flex items-center gap-2'>
             <span className='w-1 h-5 bg-primary rounded-full' />
-            {t('modal.overview')}
+            프로젝트 소개
           </h3>
-          <p className='text-muted-foreground leading-relaxed'>{overview}</p>
+
+          <p className='text-muted-foreground leading-relaxed'>{description}</p>
         </div>
 
-        <Separator className='my-4' />
+        <Separator className='my-5' />
 
-        {/* Key Features/Tasks */}
+        {/* Tasks */}
         <div>
           <h3 className='text-lg font-semibold mb-3 flex items-center gap-2'>
             <span className='w-1 h-5 bg-primary rounded-full' />
-            {t('modal.tasks')}
+            주요 구현
           </h3>
+
           <ul className='space-y-2'>
             {tasks.map((task, index) => (
               <li
@@ -135,14 +145,15 @@ export function PersonalProjectModal({
           </ul>
         </div>
 
-        <Separator className='my-4' />
+        <Separator className='my-5' />
 
         {/* Tech Stack */}
         <div>
           <h3 className='text-lg font-semibold mb-3 flex items-center gap-2'>
             <span className='w-1 h-5 bg-primary rounded-full' />
-            {t('modal.techStack')}
+            기술 스택
           </h3>
+
           <div className='flex flex-wrap gap-2'>
             {tech.map((item) => (
               <Badge key={item} variant='secondary' className='text-sm'>
@@ -152,20 +163,26 @@ export function PersonalProjectModal({
           </div>
         </div>
 
-        <Separator className='my-4' />
+        <Separator className='my-5' />
 
-        {/* Links */}
+        {/* Achievements */}
         <div>
           <h3 className='text-lg font-semibold mb-3 flex items-center gap-2'>
             <span className='w-1 h-5 bg-primary rounded-full' />
-            {t('modal.links')}
+            성과
           </h3>
-          <Button asChild variant='outline' size='sm'>
-            <a href={github} target='_blank' rel='noopener noreferrer'>
-              <Github className='mr-2 h-4 w-4' />
-              GitHub Repository
-            </a>
-          </Button>
+
+          <ul className='space-y-2'>
+            {achievements.map((achievement, index) => (
+              <li key={index} className='flex items-start gap-3'>
+                <span className='mt-2 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0' />
+
+                <span className='font-medium text-foreground'>
+                  {achievement}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </DialogContent>
     </Dialog>

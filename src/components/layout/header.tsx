@@ -1,48 +1,57 @@
 'use client';
 
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
-import { Moon, Sun, Globe, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
-import { usePathname, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import * as gtag from '@/lib/gtag';
 
 export function Header() {
   const t = useTranslations('nav');
   const tTheme = useTranslations('theme');
-  const locale = useLocale();
   const { theme = 'dark', setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
 
   const navItems = [
-    { href: '#about', label: t('about'), gtagLabel: 'about' },
-    { href: '#experience', label: t('experience'), gtagLabel: 'experience' },
-    { href: '#projects', label: t('projects'), gtagLabel: 'projects' },
+    {
+      href: '#about',
+      label: t('about'),
+      gtagLabel: 'about',
+    },
+    {
+      href: '#projects',
+      label: t('projects'),
+      gtagLabel: 'projects',
+    },
     {
       href: '#personal-projects',
       label: t('personalProjects'),
       gtagLabel: 'personal-projects',
     },
-    { href: '#skills', label: t('skills'), gtagLabel: 'skills' },
-    { href: '#education', label: t('education'), gtagLabel: 'education' },
-    { href: '#blog', label: t('blog'), gtagLabel: 'blog' },
-    { href: '#contact', label: t('contact'), gtagLabel: 'contact' },
+    {
+      href: '#experience',
+      label: t('experience'),
+      gtagLabel: 'experience',
+    },
+    {
+      href: '#skills',
+      label: t('skills'),
+      gtagLabel: 'skills',
+    },
+    {
+      href: '#education',
+      label: t('education'),
+      gtagLabel: 'education',
+    },
+    {
+      href: '#contact',
+      label: t('contact'),
+      gtagLabel: 'contact',
+    },
   ];
-
-  const toggleLanguage = () => {
-    const newLocale = locale === 'ko' ? 'en' : 'ko';
-    router.replace(pathname, { locale: newLocale });
-    gtag.event({
-      action: 'click',
-      category: 'button',
-      label: 'language_toggle',
-    });
-  };
 
   return (
     <header className='fixed top-0 left-0 right-0 z-50 p-4'>
@@ -54,7 +63,7 @@ export function Header() {
               href='/'
               className='text-xl font-bold gradient-text px-3 py-1 rounded-xl hover:liquid-glass-subtle transition-all'
             >
-              JunHee Lee
+              Yejin Chu
             </Link>
 
             {/* Desktop Navigation */}
@@ -85,25 +94,13 @@ export function Header() {
 
             {/* Actions */}
             <div className='flex items-center gap-2'>
-              {/* Language Toggle */}
-              <Button
-                variant='ghost'
-                size='sm'
-                onClick={toggleLanguage}
-                className='text-muted-foreground hover:text-foreground gap-1.5 px-2 rounded-xl hover:liquid-glass-subtle'
-                aria-label={
-                  locale === 'ko' ? 'Switch to English' : '한국어로 전환'
-                }
-              >
-                <Globe className='h-4 w-4' />
-              </Button>
-
               {/* Theme Toggle */}
               <Button
                 variant='ghost'
                 size='icon'
                 onClick={() => {
                   setTheme(theme === 'dark' ? 'light' : 'dark');
+
                   gtag.event({
                     action: 'click',
                     category: 'button',
@@ -117,6 +114,7 @@ export function Header() {
                 ) : (
                   <Moon className='h-4 w-4' />
                 )}
+
                 <span className='sr-only'>
                   {theme === 'dark' ? tTheme('light') : tTheme('dark')}
                 </span>
@@ -158,6 +156,7 @@ export function Header() {
                     href={item.href}
                     onClick={() => {
                       setMobileMenuOpen(false);
+
                       gtag.event({
                         action: 'click',
                         category: 'navigation',

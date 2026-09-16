@@ -1,15 +1,9 @@
 import { getRequestConfig } from 'next-intl/server';
-import { locales, type Locale } from './config';
+import ko from './messages/ko.json';
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-
-  if (!locale || !locales.includes(locale as Locale)) {
-    locale = 'ko';
-  }
-
+export default getRequestConfig(async () => {
   return {
-    locale,
-    messages: (await import(`./messages/${locale}.json`)).default,
+    locale: 'ko',
+    messages: ko,
   };
 });

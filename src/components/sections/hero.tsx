@@ -4,11 +4,10 @@ import { useTranslations } from 'next-intl';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Download, Github, Linkedin, Mail, BookOpen } from 'lucide-react';
+import { Download, Github, Mail } from 'lucide-react';
 import * as gtag from '@/lib/gtag';
 import LiquidEther from '@/components/common/liquid-ether';
 
-// Theme-based color palettes
 const LIGHT_COLORS = ['#3425A0', '#4231c8', '#7B6AE8'];
 const DARK_COLORS = ['#4A90D9', '#7CB5F7', '#A8D4FF'];
 
@@ -16,39 +15,28 @@ export function Hero() {
   const t = useTranslations('hero');
   const { resolvedTheme } = useTheme();
 
-  // Use light colors as default during SSR, then switch based on resolved theme
   const liquidColors = resolvedTheme === 'dark' ? DARK_COLORS : LIGHT_COLORS;
 
   const socialLinks = [
     {
       icon: Github,
-      href: 'https://github.com/junh0328',
+      href: 'https://github.com/chuyejinn',
       label: 'GitHub',
       gtagLabel: 'github',
-    },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/%EC%A4%80%ED%9D%AC-%EC%9D%B4-23176a214/',
-      label: 'LinkedIn',
-      gtagLabel: 'linkedin',
+      external: true,
     },
     {
       icon: Mail,
-      href: 'mailto:junh0328@naver.com',
+      href: 'mailto:chuyejin0403@naver.com',
       label: 'Email',
       gtagLabel: 'email',
-    },
-    {
-      icon: BookOpen,
-      href: 'https://junheedot.tistory.com',
-      label: 'Tech blog',
-      gtagLabel: 'blog_tistory',
+      external: false,
     },
   ];
 
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden pt-16'>
-      {/* Background - LiquidEther */}
+      {/* Background */}
       <div className='absolute inset-0 -z-10 pointer-events-auto'>
         <LiquidEther
           key={resolvedTheme}
@@ -62,7 +50,7 @@ export function Hero() {
 
       <div className='container mx-auto px-4'>
         <div className='max-w-4xl mx-auto text-center'>
-          {/* Name - Large Typography */}
+          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,7 +60,7 @@ export function Hero() {
             {t('name')}
           </motion.h1>
 
-          {/* Role - Gradient Text */}
+          {/* Role */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,7 +89,7 @@ export function Hero() {
           >
             <Button size='lg' variant='glass' className='glass-glow' asChild>
               <a
-                href='/resume/resume-20260205.pdf'
+                href='/resume/yejin-chu-resume.pdf'
                 download
                 onClick={() =>
                   gtag.event({
@@ -114,9 +102,10 @@ export function Hero() {
                 {t('downloadResume')}
               </a>
             </Button>
+
             <Button size='lg' variant='glass' asChild>
               <a
-                href='https://github.com/junh0328'
+                href='https://github.com/chuyejinn'
                 target='_blank'
                 rel='noopener noreferrer'
                 onClick={() =>
@@ -144,11 +133,14 @@ export function Hero() {
               <motion.a
                 key={link.label}
                 href={link.href}
-                target='_blank'
-                rel='noopener noreferrer'
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.6 + index * 0.1,
+                }}
                 className='relative group p-3 rounded-full liquid-glass hover:liquid-glass-elevated hover:scale-110 transition-all'
                 aria-label={link.label}
                 onClick={() =>
@@ -160,6 +152,7 @@ export function Hero() {
                 }
               >
                 <link.icon className='h-5 w-5' />
+
                 <span className='absolute -bottom-8 left-1/2 -translate-x-1/2 px-3 py-1.5 text-xs rounded-lg liquid-glass-elevated opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap'>
                   {link.label}
                 </span>
@@ -168,7 +161,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator - hidden on mobile */}
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -177,10 +170,14 @@ export function Hero() {
         >
           <div className='flex flex-col items-center gap-2'>
             <span className='text-xs text-muted-foreground'>Scroll</span>
+
             <div className='w-6 h-10 rounded-full border-2 border-muted-foreground/50 flex justify-center pt-2'>
               <motion.div
                 animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                }}
                 className='w-1.5 h-1.5 rounded-full bg-muted-foreground'
               />
             </div>

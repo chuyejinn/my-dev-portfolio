@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Github, Linkedin, FileText, ExternalLink } from 'lucide-react';
+import { Mail, Github, ExternalLink } from 'lucide-react';
 import { SpotlightCard } from '@/components/common/spotlight-card';
 import * as gtag from '@/lib/gtag';
 
@@ -14,47 +14,23 @@ export function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      href: 'mailto:junh0328@naver.com',
-      username: 'junh0328@naver.com',
+      href: 'mailto:chuyejin0403@naver.com',
+      username: 'chuyejin0403@naver.com',
       color: 'hover:text-red-500',
       gtagLabel: 'email',
     },
     {
       icon: Github,
-      label: t('links.github'),
-      href: 'https://github.com/junh0328',
-      username: 'junh0328',
+      label: 'GitHub',
+      href: 'https://github.com/chuyejinn',
+      username: 'chuyejinn',
       color: 'hover:text-gray-400',
       gtagLabel: 'github',
-    },
-    {
-      icon: Linkedin,
-      label: t('links.linkedin'),
-      href: 'https://www.linkedin.com/in/%EC%A4%80%ED%9D%AC-%EC%9D%B4-23176a214/',
-      username: '이준희',
-      color: 'hover:text-blue-500',
-      gtagLabel: 'linkedin',
-    },
-    {
-      icon: FileText,
-      label: t('links.tistory'),
-      href: 'https://junheedot.tistory.com',
-      username: 'junheedot',
-      color: 'hover:text-orange-500',
-      gtagLabel: 'blog_tistory',
-    },
-    {
-      icon: FileText,
-      label: t('links.velog'),
-      href: 'https://velog.io/@junh0328',
-      username: '@junh0328',
-      color: 'hover:text-green-500',
-      gtagLabel: 'blog_velog',
     },
   ];
 
   return (
-    <section id='contact' className='py-20 md:py-32'>
+    <section id='contact' className='py-20 md:py-32 scroll-mt-28'>
       <div className='container mx-auto px-4'>
         <div className='max-w-2xl mx-auto text-center'>
           {/* Header */}
@@ -65,10 +41,14 @@ export function Contact() {
             viewport={{ once: true }}
             className='mb-12'
           >
-            <h2 className='text-3xl md:text-4xl font-bold'>{t('subtitle')}</h2>
+            <h2 className='text-3xl md:text-4xl font-bold mb-4'>
+              {t('title')}
+            </h2>
+
+            <p className='text-muted-foreground'>{t('subtitle')}</p>
           </motion.div>
 
-          {/* Social Links Grid */}
+          {/* Contact Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,11 +60,18 @@ export function Contact() {
                 <SpotlightCard key={link.label} className='h-full'>
                   <motion.a
                     href={link.href}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target={link.gtagLabel === 'email' ? undefined : '_blank'}
+                    rel={
+                      link.gtagLabel === 'email'
+                        ? undefined
+                        : 'noopener noreferrer'
+                    }
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: 0.2 + index * 0.05,
+                    }}
                     viewport={{ once: true }}
                     className='h-full block'
                     onClick={() =>
@@ -104,15 +91,18 @@ export function Contact() {
                                 className={`h-5 w-5 text-muted-foreground transition-colors ${link.color}`}
                               />
                             </div>
+
                             <div className='text-left'>
                               <p className='font-medium group-hover:text-primary transition-colors'>
                                 {link.label}
                               </p>
+
                               <p className='text-sm text-muted-foreground'>
                                 {link.username}
                               </p>
                             </div>
                           </div>
+
                           <ExternalLink className='h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors' />
                         </div>
                       </CardContent>
