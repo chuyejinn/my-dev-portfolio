@@ -2,7 +2,7 @@
 
 백엔드 개발자 추예진의 포트폴리오 웹사이트입니다.
 
-프로젝트 경험과 문제 해결 과정, 기술 스택, 학생회 활동 등을 한눈에 확인할 수 있도록 구성했습니다.
+프로젝트 경험과 문제 해결 과정, 기술 스택, 학생회 활동을 한눈에 확인할 수 있도록 구성했습니다.
 
 ## Portfolio
 
@@ -69,4 +69,8 @@ pnpm build
 
 - Email: chuyejin0403@naver.com
 - GitHub: https://github.com/chuyejinn
+<<<<<<< HEAD
 - Portfolio: https://my-dev-portfolio-one-omega.vercel.app
+=======
+- Portfolio: https://my-dev-portfolio-one-omega.vercel.app
+>>>>>>> d3630e8 (Clean up portfolio repository)
