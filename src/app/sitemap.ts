@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // 배포 후 실제 도메인으로 변경
-  const baseUrl = 'https://example.com';
+const baseUrl = 'https://my-dev-portfolio-one-omega.vercel.app';
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,

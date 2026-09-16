@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://my-dev-portfolio-one-omega.vercel.app'),
+
   title: {
     default: '추예진 | Backend Developer',
     template: '%s | 추예진',
