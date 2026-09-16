@@ -9,7 +9,6 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 import { PersonalProjectModal } from './personal-project-modal';
 import { SpotlightCard } from '@/components/common/spotlight-card';
-import * as gtag from '@/lib/gtag';
 
 export function PersonalProjects() {
   const t = useTranslations('personalProjects');
@@ -66,12 +65,6 @@ export function PersonalProjects() {
                     className='h-full group overflow-hidden cursor-pointer flex flex-col'
                     onClick={() => {
                       setSelectedProject(project.key);
-
-                      gtag.event({
-                        action: 'open',
-                        category: 'modal',
-                        label: `personal_project_${project.key}`,
-                      });
                     }}
                   >
                     {/* Preview */}

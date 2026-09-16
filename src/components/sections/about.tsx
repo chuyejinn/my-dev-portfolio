@@ -27,18 +27,18 @@ export function About() {
 
   const highlights = [
     {
-      key: 'spot',
+      key: 'backend',
       icon: Server,
     },
     {
-      key: 'p2p',
+      key: 'problemSolving',
       icon: Search,
     },
     {
-      key: 'seo',
+      key: 'project',
       icon: Cloud,
     },
-  ];
+  ];;
 
   return (
     <section id='about' className='py-20 md:py-32'>

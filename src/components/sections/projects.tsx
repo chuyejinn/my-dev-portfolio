@@ -9,7 +9,19 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight } from 'lucide-react';
 import { ProjectModal } from './project-modal';
 import { SpotlightCard } from '@/components/common/spotlight-card';
-import * as gtag from '@/lib/gtag';
+
+  const projects = [
+  {
+    key: 'hospin',
+    cardVariant: 'editorial' as const,
+    spotlightColor: 'rgba(110, 140, 255, 0.16)',
+  },
+  {
+    key: 'jobflow',
+    cardVariant: 'glass' as const,
+    spotlightColor: 'rgba(110, 205, 255, 0.14)',
+  },
+];
 
 export function Projects() {
   const t = useTranslations('projects');
@@ -20,18 +32,7 @@ export function Projects() {
     jobflow: 0,
   });
 
-  const projects = [
-    {
-      key: 'hospin',
-      cardVariant: 'editorial' as const,
-      spotlightColor: 'rgba(110, 140, 255, 0.16)',
-    },
-    {
-      key: 'jobflow',
-      cardVariant: 'glass' as const,
-      spotlightColor: 'rgba(110, 205, 255, 0.14)',
-    },
-  ];
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,12 +96,6 @@ export function Projects() {
                     className='h-full group overflow-hidden cursor-pointer flex flex-col'
                     onClick={() => {
                       setSelectedProject(project.key);
-
-                      gtag.event({
-                        action: 'open',
-                        category: 'modal',
-                        label: `project_${project.key}`,
-                      });
                     }}
                   >
                     {/* Preview */}
@@ -145,11 +140,10 @@ export function Projects() {
                             {images.map((_, imageIndex) => (
                               <span
                                 key={imageIndex}
-                                className={`h-1.5 rounded-full transition-all duration-300 ${
-                                  imageIndex === currentImageIndex
+                                className={`h-1.5 rounded-full transition-all duration-300 ${imageIndex === currentImageIndex
                                     ? 'w-4 bg-white'
                                     : 'w-1.5 bg-white/50'
-                                }`}
+                                  }`}
                               />
                             ))}
                           </div>

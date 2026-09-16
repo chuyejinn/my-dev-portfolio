@@ -15,7 +15,6 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { SpotlightCard } from '@/components/common/spotlight-card';
-import * as gtag from '@/lib/gtag';
 
 export function Education() {
   const tEdu = useTranslations('education');
@@ -59,12 +58,6 @@ export function Education() {
                 open={isCoursesOpen}
                 onOpenChange={(open) => {
                   setIsCoursesOpen(open);
-
-                  gtag.event({
-                    action: 'click',
-                    category: 'button',
-                    label: 'courses_toggle',
-                  });
                 }}
               >
                 <Card className='liquid-glass overflow-hidden'>
@@ -113,9 +106,8 @@ export function Education() {
                               : tEdu('viewCourses')}
 
                             <ChevronDown
-                              className={`h-4 w-4 transition-transform duration-200 ${
-                                isCoursesOpen ? 'rotate-180' : ''
-                              }`}
+                              className={`h-4 w-4 transition-transform duration-200 ${isCoursesOpen ? 'rotate-180' : ''
+                                }`}
                             />
                           </Button>
                         </CollapsibleTrigger>

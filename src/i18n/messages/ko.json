@@ -20,7 +20,7 @@
     "title": "소개",
     "subtitle": "핵심 역량",
     "highlights": {
-      "spot": {
+      "backend": {
         "title": "백엔드 API 설계 및 구현",
         "company": "HOSPIN",
         "description": "의료 웹 서비스의 백엔드 설계부터 구현과 배포까지 담당",
@@ -29,7 +29,7 @@
           "Spring Boot 기반 REST API 및 데이터 처리"
         ]
       },
-      "p2p": {
+      "problemSolving": {
         "title": "서비스 흐름 분석 및 개선",
         "company": "Problem Solving",
         "description": "인증부터 예약 처리까지 전체 요청 흐름을 추적해 병목 원인 개선",
@@ -38,13 +38,13 @@
           "인증 처리 시간 0.7초 → 0.5초로 약 30% 개선"
         ]
       },
-      "seo": {
+      "project": {
         "title": "서비스 구현 및 연동 경험",
         "company": "Project",
-        "description": "아이디어를 데이터 구조와 기능으로 구체화하며 개인 프로젝트를 개발",
+        "description": "아이디어를 서비스 구조와 기능으로 구체화하며 직접 구현한 경험",
         "metrics": [
           "구직 지원 관리 서비스 JobFlow 설계 및 개발",
-          "출석 관리 서비스의 백엔드·프론트엔드 연동 경험"
+          "학생회 축제 웹 서비스 기획·개발 및 QR 배포, 300명 이상 참여"
         ]
       }
     },

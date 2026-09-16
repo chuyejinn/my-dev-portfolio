@@ -54,7 +54,6 @@ export function PersonalProjectModal({
 
   const tech = t.raw(`items.${projectKey}.tech`) as string[];
 
-  const features = t.raw(`items.${projectKey}.features`) as string[];
 
   const tasks = t.raw(`items.${projectKey}.detail.tasks`) as string[];
 

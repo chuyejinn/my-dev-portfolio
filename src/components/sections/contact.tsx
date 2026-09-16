@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Github, ExternalLink } from 'lucide-react';
 import { SpotlightCard } from '@/components/common/spotlight-card';
-import * as gtag from '@/lib/gtag';
 
 export function Contact() {
   const t = useTranslations('contact');
@@ -17,7 +16,7 @@ export function Contact() {
       href: 'mailto:chuyejin0403@naver.com',
       username: 'chuyejin0403@naver.com',
       color: 'hover:text-red-500',
-      gtagLabel: 'email',
+      external: false,
     },
     {
       icon: Github,
@@ -25,7 +24,7 @@ export function Contact() {
       href: 'https://github.com/chuyejinn',
       username: 'chuyejinn',
       color: 'hover:text-gray-400',
-      gtagLabel: 'github',
+      external: true,
     },
   ];
 
@@ -60,12 +59,8 @@ export function Contact() {
                 <SpotlightCard key={link.label} className='h-full'>
                   <motion.a
                     href={link.href}
-                    target={link.gtagLabel === 'email' ? undefined : '_blank'}
-                    rel={
-                      link.gtagLabel === 'email'
-                        ? undefined
-                        : 'noopener noreferrer'
-                    }
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{
@@ -74,13 +69,7 @@ export function Contact() {
                     }}
                     viewport={{ once: true }}
                     className='h-full block'
-                    onClick={() =>
-                      gtag.event({
-                        action: 'click',
-                        category: 'link',
-                        label: link.gtagLabel,
-                      })
-                    }
+                    
                   >
                     <Card className='h-full liquid-glass-interactive group'>
                       <CardContent className='pt-6'>

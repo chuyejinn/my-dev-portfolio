@@ -5,7 +5,6 @@ import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Download, Github, Mail } from 'lucide-react';
-import * as gtag from '@/lib/gtag';
 import LiquidEther from '@/components/common/liquid-ether';
 
 const LIGHT_COLORS = ['#3425A0', '#4231c8', '#7B6AE8'];
@@ -22,14 +21,12 @@ export function Hero() {
       icon: Github,
       href: 'https://github.com/chuyejinn',
       label: 'GitHub',
-      gtagLabel: 'github',
       external: true,
     },
     {
       icon: Mail,
       href: 'mailto:chuyejin0403@naver.com',
       label: 'Email',
-      gtagLabel: 'email',
       external: false,
     },
   ];
@@ -91,12 +88,7 @@ export function Hero() {
               <a
                 href='/resume/yejin-chu-resume.pdf'
                 download
-                onClick={() =>
-                  gtag.event({
-                    action: 'download',
-                    category: 'resume',
-                  })
-                }
+                
               >
                 <Download className='mr-2 h-4 w-4' />
                 {t('downloadResume')}
@@ -108,13 +100,7 @@ export function Hero() {
                 href='https://github.com/chuyejinn'
                 target='_blank'
                 rel='noopener noreferrer'
-                onClick={() =>
-                  gtag.event({
-                    action: 'click',
-                    category: 'link',
-                    label: 'github',
-                  })
-                }
+                
               >
                 <Github className='mr-2 h-4 w-4' />
                 {t('viewGithub')}
@@ -143,13 +129,7 @@ export function Hero() {
                 }}
                 className='relative group p-3 rounded-full liquid-glass hover:liquid-glass-elevated hover:scale-110 transition-all'
                 aria-label={link.label}
-                onClick={() =>
-                  gtag.event({
-                    action: 'click',
-                    category: 'link',
-                    label: link.gtagLabel,
-                  })
-                }
+                
               >
                 <link.icon className='h-5 w-5' />
 

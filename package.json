@@ -8,15 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\""
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,json}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.12",
@@ -26,7 +19,6 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "dayjs": "^1.11.19",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^0.577.0",
@@ -44,7 +36,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.182.0",
-    "@vitest/coverage-v8": "^4.0.18",
     "babel-plugin-react-compiler": "1.0.0",
     "baseline-browser-mapping": "^2.10.0",
     "eslint": "^9",
@@ -53,7 +44,6 @@
     "prettier": "^3.8.1",
     "shadcn": "^4.11.0",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "vitest": "^4.0.18"
+    "typescript": "^5"
   }
 }

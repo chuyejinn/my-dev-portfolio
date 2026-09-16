@@ -7,7 +7,6 @@ import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
-import * as gtag from '@/lib/gtag';
 
 export function Header() {
   const t = useTranslations('nav');
@@ -19,37 +18,30 @@ export function Header() {
     {
       href: '#about',
       label: t('about'),
-      gtagLabel: 'about',
     },
     {
       href: '#projects',
       label: t('projects'),
-      gtagLabel: 'projects',
     },
     {
       href: '#personal-projects',
       label: t('personalProjects'),
-      gtagLabel: 'personal-projects',
     },
     {
       href: '#experience',
       label: t('experience'),
-      gtagLabel: 'experience',
     },
     {
       href: '#skills',
       label: t('skills'),
-      gtagLabel: 'skills',
     },
     {
       href: '#education',
       label: t('education'),
-      gtagLabel: 'education',
     },
     {
       href: '#contact',
       label: t('contact'),
-      gtagLabel: 'contact',
     },
   ];
 
@@ -78,13 +70,7 @@ export function Header() {
                 >
                   <a
                     href={item.href}
-                    onClick={() =>
-                      gtag.event({
-                        action: 'click',
-                        category: 'navigation',
-                        label: item.gtagLabel,
-                      })
-                    }
+
                   >
                     {item.label}
                   </a>
@@ -100,12 +86,6 @@ export function Header() {
                 size='icon'
                 onClick={() => {
                   setTheme(theme === 'dark' ? 'light' : 'dark');
-
-                  gtag.event({
-                    action: 'click',
-                    category: 'button',
-                    label: 'theme_toggle',
-                  });
                 }}
                 className='text-muted-foreground hover:text-foreground rounded-xl hover:liquid-glass-subtle'
               >
@@ -156,12 +136,6 @@ export function Header() {
                     href={item.href}
                     onClick={() => {
                       setMobileMenuOpen(false);
-
-                      gtag.event({
-                        action: 'click',
-                        category: 'navigation',
-                        label: item.gtagLabel,
-                      });
                     }}
                   >
                     {item.label}
