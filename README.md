@@ -1,29 +1,54 @@
-# My Dev Portfolio
+# Yejin Chu Portfolio
 
-클로드 코드를 통해 설계한 포트폴리오 웹사이트입니다. 배포를 포함한 클라이언트가 담당하는 전반적인 부분을 담았습니다.
+백엔드 개발자 추예진의 포트폴리오 웹사이트입니다.
 
-<img src="./assets/main.png" alt="포트폴리오 메인 섹션">
+프로젝트 경험과 문제 해결 과정, 기술 스택, 학생회 활동 등을 한눈에 확인할 수 있도록 구성했습니다.
 
-## 주요 특징
+## Portfolio
 
-- **다국어 지원** - 한국어/영어 전환 가능
-- **다크 모드** - 라이트/다크/시스템 테마 지원
-- **반응형 디자인** - 모바일, 태블릿, 데스크탑 대응
-- **SEO 최적화** - 메타태그, sitemap, robots.txt, canonical URL 설정
-- **Google Analytics** - 사용자 행동 및 이벤트 추적
-- **404 페이지** - 커스텀 에러 페이지 (LiquidEther 배경)
+https://my-dev-portfolio-one-omega.vercel.app
 
-## 기술 스택
+## 주요 구성
 
-| 분류      | 기술                      |
-| --------- | ------------------------- |
-| Framework | Next.js 16, React 19      |
-| Language  | TypeScript                |
-| Styling   | Tailwind CSS 4, shadcn/ui |
-| Animation | Framer Motion             |
-| i18n      | next-intl                 |
-| Theme     | next-themes               |
-| Analytics | Google Analytics 4        |
+- **About** - 백엔드 개발 경험과 개발 방식
+- **Projects** - HOSPIN, JobFlow 프로젝트
+- **Side Project** - 학생회 축제 성격유형 추천 웹 서비스
+- **Experience** - 4년간의 공과대학 학생회 활동
+- **Skills** - 백엔드 개발 중심 기술 스택
+- **Education** - 학력 및 자격증
+- **Contact** - 이메일 및 GitHub
+
+## 주요 프로젝트
+
+### HOSPIN
+
+증상을 기반으로 적절한 진료과를 추천하고 병원 예약까지 연결하는 의료 웹 서비스입니다.
+
+- 백엔드 설계 및 개발 담당
+- 인증·예약·진료기록 등 총 19개 API 구현
+- JWT 기반 사용자 권한별 인증·인가 구현
+- 인증 흐름 개선을 통해 처리 시간 약 30% 단축
+- AWS EC2·RDS 환경 배포
+
+### JobFlow
+
+기업·채용·지원·면접 정보를 한 곳에서 관리하기 위해 개발 중인 구직 지원 관리 서비스입니다.
+
+- 사용자·기업·채용·지원·면접 데이터 구조 설계
+- 엔티티 관계 및 제약조건 정의
+- Spring Boot와 JPA 기반 백엔드 구조 설계
+- CRUD 기능 단계적 개발 진행
+
+## 포트폴리오 기술 스택
+
+| 분류 | 기술 |
+| --- | --- |
+| Framework | Next.js 16, React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4, shadcn/ui |
+| Animation | Framer Motion |
+| Theme | next-themes |
+| Deploy | Vercel |
 
 ## 실행 방법
 
@@ -31,79 +56,17 @@
 # 의존성 설치
 pnpm install
 
-# 개발 서버 실행 (http://localhost:3000)
+# 개발 서버 실행
 pnpm dev
 
-# 품질 게이트 일괄 검증
-pnpm verify:harness
+# Production Build
+pnpm build
 ```
 
-상세 실행/검증 명령은 `docs/development-guide.md`를 기준으로 관리합니다.
+개발 서버는 기본적으로 `http://localhost:3000`에서 실행됩니다.
 
-## 엔지니어링 문서
+## Contact
 
-- 에이전트 실행 가이드: `AGENTS.md`
-- 에이전트 작업 플레이북: `docs/agent-playbook.md`
-- 품질 게이트/CI/훅 가이드: `docs/README.md`
-- 개발 가이드: `docs/development-guide.md`
-- API 계약: `docs/api-contract.md`
-- 의사결정 기록(ADR): `docs/adr/0001-quality-gates.md`
-- 협업 컨텍스트(이력서 업데이트 전용): `CLAUDE.md`
-
-## 프로젝트 구조
-
-```
-src/
-├── app/                    # Next.js App Router
-│   ├── [locale]/           # 다국어 라우팅 (ko, en)
-│   │   ├── layout.tsx      # 로케일별 레이아웃
-│   │   ├── page.tsx        # 메인 페이지
-│   │   └── not-found.tsx   # 로케일별 404 페이지
-│   ├── layout.tsx          # 루트 레이아웃 (폰트, 메타데이터, GA)
-│   ├── not-found.tsx       # 루트 404 페이지
-│   ├── globals.css         # 전역 스타일
-│   ├── robots.ts           # robots.txt 생성
-│   └── sitemap.ts          # sitemap.xml 생성
-│
-├── components/
-│   ├── ui/                 # shadcn/ui 컴포넌트
-│   ├── common/             # 공통 컴포넌트
-│   │   ├── liquid-ether.tsx  # 배경 애니메이션
-│   │   └── ascii-text.tsx    # ASCII 텍스트 효과
-│   ├── layout/             # Header, Footer
-│   ├── sections/           # 포트폴리오 섹션들
-│   │   ├── hero.tsx        # 히어로 섹션
-│   │   ├── about.tsx       # 소개 섹션
-│   │   ├── experience.tsx  # 경력 섹션
-│   │   ├── projects.tsx    # 프로젝트 섹션
-│   │   ├── skills.tsx      # 기술 스택 섹션
-│   │   ├── education.tsx   # 학력/자격증 섹션
-│   │   ├── blog.tsx        # 블로그 섹션
-│   │   └── contact.tsx     # 연락처 섹션
-│   └── providers/          # Theme Provider
-│
-├── i18n/                   # 국제화 설정
-│   ├── messages/           # 번역 파일 (ko.json, en.json)
-│   ├── config.ts           # 로케일 설정
-│   └── navigation.ts       # 다국어 네비게이션
-│
-├── lib/                    # 유틸리티 함수
-│   ├── utils.ts            # cn() 유틸리티
-│   ├── blog.ts             # 블로그 데이터 fetching
-│   ├── fonts.ts            # 폰트 설정
-│   └── gtag.ts             # Google Analytics 유틸리티
-│
-└── types/                  # TypeScript 타입 선언
-    └── gtag.d.ts           # gtag 타입 정의
-```
-
-## 포트폴리오 섹션
-
-1. **Hero** - 프로필 소개 및 CTA 버튼
-2. **About** - 핵심 역량 및 비즈니스 임팩트
-3. **Experience** - 경력 사항 (타임라인)
-4. **Projects** - 주요 프로젝트 (SPOT, P2P, KYC 등)
-5. **Skills** - 기술 스택 (React, Next.js, TypeScript 등)
-6. **Education** - 학력 및 자격증
-7. **Blog** - 최신 블로그 포스트
-8. **Contact** - 연락처 및 소셜 링크
+- Email: chuyejin0403@naver.com
+- GitHub: https://github.com/chuyejinn
+- Portfolio: https://my-dev-portfolio-one-omega.vercel.app
